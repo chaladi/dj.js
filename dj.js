@@ -1,6 +1,9 @@
 class djs {
   constructor(ob) {
     this.ob=ob;
+    // if(ob){
+    //   this.ob=typeof(ob)=='object'?[ob]:document.querySelectorAll(ob);
+    // }
     this.doExec=(callback,returnFlag) => {
       const ob=this.ob;
       var ret="";
@@ -10,6 +13,7 @@ class djs {
       }
       return ret;
     };
+    this.isitArray=(input) => { return typeof(input)=='object'&&(input instanceof Array); };
   }
   isArray(input){ return typeof(input)=='object'&&(input instanceof Array); };
   on(type,callback){ this.doExec(function(aob){ aob['on'+type]=callback;}); };//event handling like click
@@ -57,18 +61,25 @@ class djs {
     this.doExec(function(aob){ aob.parentNode.insertBefore(node, aob);});
   };
 
+  testme(str){
+    alert(str);
+  };
 
-
-}
+} //end of djs
 
 
 dj = function(selector) {
+    if(typeof selector == 'undefined'){
+      return new djs();
+    }else{
       var djob=typeof(selector)=='object'?[selector]:document.querySelectorAll(selector);
       return new djs(djob);
-    };
+    }
+};
 
 //Extending functionality
     dj.sample = function() {
             //do something here
-            //return that; 
+            //return that;
+            alert("sample");
     };
