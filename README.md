@@ -16,7 +16,7 @@ Sample code,
 
     dj(".class1").append("This string is appended to class1");
 
-    dj("#bt").on("click", function(){
+    dj("#bt").on("click", function(){  // event handling
       if(dj().isArray([1,2,3])){
         alert("Tharray is 3")
       }
